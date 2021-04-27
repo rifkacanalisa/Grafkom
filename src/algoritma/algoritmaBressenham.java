@@ -8,7 +8,7 @@ public class algoritmaBressenham {
     public void perhitunganGaris(){
         int x1,y1,x2,y2, dx, dy, p, x_new, y_new, i = 2;
 
-        System.out.print("input x1 (x awal) = ");
+        System.out.print("\ninput x1 (x awal) = ");
         x1 = input.nextInt();
         System.out.print("input y1 (y awal) = ");
         y1 = input.nextInt();
@@ -19,22 +19,37 @@ public class algoritmaBressenham {
         System.out.println("PROSES PERHITUNGAN");
         System.out.println("1. (X,Y) = "+"("+x1+","+y1+")");
 
-        dx = x2 - x1;
-        dy = y2 - y1;
-        p = 2*dy - dx;
+        dx = Math.abs(x2 - x1);
+        dy = Math.abs(y2 - y1);
         x_new = x1;
         y_new = y1;
-        do {
-            x_new++;
-            if(p<0){
-                p = p+2*dy;
-            } else {
-                y_new++;
-                p = p+2*dy-2*dx;
-            }
-            System.out.println(i+". (X,Y) = "+"("+x_new+","+y_new+")");
-            i++;
-        } while (x_new < x2 || y_new < y2);
+        if(y2 > y1){ //naik
+            p = 2*dy - dx;
+            do {
+                x_new++;
+                if(p<0){
+                    p = p+2*dy;
+                } else {
+                    y_new++;
+                    p = p+2*dy-2*dx;
+                }
+                System.out.println(i+". (X,Y) = "+"("+x_new+","+y_new+")");
+                i++;
+            } while (x_new < x2 || y_new < y2);
+        } else { // turun ke kanan
+            p = 2*dx - dy;
+            do {
+                y_new--;
+                if(p<0){
+                    p = p+2*dx;
+                } else {
+                    x_new++;
+                    p = p+2*dx-2*dy;
+                }
+                System.out.println(i+". (X,Y) = "+"("+x_new+","+y_new+")");
+                i++;
+            } while (x_new < x2 || y_new < y2);
+        }
     }
 
     public void perhitunganLingkaran(){
@@ -46,7 +61,7 @@ public class algoritmaBressenham {
         System.out.println("PROSES PERHITUNGAN (OKTAN 2)");
         System.out.println("1. (X,Y) = "+"("+x+","+y+")");
 
-        p = Math.round(5 / 4 - r);
+        p = Math.round((float) (5 / 4) - r);
         do{
             x++;
             if(p<0){
@@ -61,7 +76,8 @@ public class algoritmaBressenham {
     }
 
     public void perhitunganElips(){
-        int rx2,ry2,rx,ry,p, i=2, x, y, pembandingX, pembandingY;
+        int rx2,ry2,rx,ry, i=2, x, y, pembandingX, pembandingY;
+        float p;
         // Rumus panjang '2Ry^2 * Xk+1' = pembandingX
 
         System.out.print("input rx (jari-jari x) = ");
@@ -76,7 +92,7 @@ public class algoritmaBressenham {
         System.out.println("PROSES Bagian 1");
         System.out.println("1. (X,Y) = "+"("+x+","+y+")");
 
-        p = ry2 - rx2 * ry + 1 / 4 * rx2;
+        p = (float) (ry2 - rx2 * ry + 0.25 * rx2);
         do {
             x++;
             if(p<0){
