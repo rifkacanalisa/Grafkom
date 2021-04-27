@@ -18,7 +18,7 @@ public class algoritmaDDA extends JPanel {
         System.out.print("input y2 (y akhir) = ");
         y2 = input.nextInt();
         System.out.println("PROSES PERHITUNGAN");
-        System.out.println("1. (X,Y) = "+"("+x1+","+y1+")");
+        System.out.println("1.\t(X,Y) =\t"+"("+x1+","+y1+")");
         perhitunganGaris(x1,y1);
     }
 
@@ -41,7 +41,7 @@ public class algoritmaDDA extends JPanel {
             y_new = y_new + y_inc;
             x_hasil = Math.round(x_new);
             y_hasil = Math.round(y_new);
-            System.out.println(i+". (X,Y) = "+"("+x_hasil+","+y_hasil+")");
+            System.out.println(i+".\t(X,Y) =\t"+"("+x_hasil+","+y_hasil+")");
             i++;
         }
     }
